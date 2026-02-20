@@ -33,6 +33,7 @@ curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/tools/codex/
 | ツール | 説明 | バージョン指定 |
 |---|---|---|
 | `codex` | [OpenAI Codex CLI](https://github.com/openai/codex) | `CODEX_VERSION=rust-v0.104.0` |
+| `copilot-cli` | [GitHub Copilot CLI](https://github.com/github/copilot-cli) | `COPILOT_CLI_VERSION=v0.0.412` |
 
 ## オプション
 

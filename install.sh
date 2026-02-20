@@ -13,6 +13,7 @@ BOOTKIT_REPO_RAW="https://raw.githubusercontent.com/pirakansa/bootkit/main"
 # ─── Available tools ──────────────────────────────────────────────────────────
 TOOLS=(
   codex
+  copilot-cli
 )
 
 # ─── Colors (inline for the dispatcher) ──────────────────────────────────────
