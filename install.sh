@@ -17,6 +17,7 @@ TOOLS=(
   gitconfig
   nodejs
   vimrc
+  vscode-settings
 )
 
 # ─── Colors (inline for the dispatcher) ──────────────────────────────────────
