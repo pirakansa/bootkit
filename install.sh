@@ -16,6 +16,7 @@ TOOLS=(
   copilot-cli
   gitconfig
   nodejs
+  vimrc
 )
 
 # ─── Colors (inline for the dispatcher) ──────────────────────────────────────
