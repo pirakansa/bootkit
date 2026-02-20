@@ -51,9 +51,9 @@ install_tool() {
   local script_url="${BOOTKIT_REPO_RAW}/tools/${tool}/install.sh"
 
   info "=== ${tool} のインストールを開始 ==="
-  local tmp_script
+  local tmp_script=""
   tmp_script="$(mktemp)"
-  trap 'rm -f "$tmp_script"' RETURN
+  trap 'rm -f "${tmp_script:-}"' RETURN
 
   if ! curl -fsSL ${BOOTKIT_PROXY:+--proxy "$BOOTKIT_PROXY"} ${BOOTKIT_INSECURE:+-k} -o "$tmp_script" "$script_url"; then
     error "tools/${tool}/install.sh のダウンロードに失敗しました。"
