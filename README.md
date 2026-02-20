@@ -34,12 +34,16 @@ curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/tools/codex/
 |---|---|---|
 | `codex` | [OpenAI Codex CLI](https://github.com/openai/codex) | `CODEX_VERSION=rust-v0.104.0` |
 | `copilot-cli` | [GitHub Copilot CLI](https://github.com/github/copilot-cli) | `COPILOT_CLI_VERSION=v0.0.412` |
+| `nodejs` | [Node.js](https://nodejs.org/) | `NODE_VERSION=v24.13.1` |
 
 ## オプション
 
 | 環境変数 | 説明 | デフォルト |
 |---|---|---|
 | `BOOTKIT_INSTALL_DIR` | インストール先ディレクトリ | `~/.local/bin` |
+| `BOOTKIT_LIB_DIR` | ライブラリ配置先 (nodejs等) | `~/.local/lib` |
+| `BOOTKIT_PROXY` | curl で使用するプロキシ URL | |
+| `BOOTKIT_INSECURE` | `1` で証明書検証をスキップ | |
 
 例：インストール先を変更する場合
 
