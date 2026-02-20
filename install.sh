@@ -14,6 +14,7 @@ BOOTKIT_REPO_RAW="https://raw.githubusercontent.com/pirakansa/bootkit/main"
 TOOLS=(
   codex
   copilot-cli
+  gitconfig
   nodejs
 )
 
