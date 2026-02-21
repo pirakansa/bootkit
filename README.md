@@ -61,9 +61,28 @@ bootkit/
 ├── tools/
 │   └── codex/
 │       └── install.sh    # codex インストーラー
+├── devcontainers/
+│   ├── setup.sh          # devcontainer セットアップスクリプト
+│   ├── rust/             # Rust テンプレート
+│   ├── go/               # Go テンプレート
+│   └── python/           # Python テンプレート
 ├── README.md
 └── LICENSE
 ```
+
+## Dev Container テンプレート
+
+各言語向けの devcontainer 設定をプロジェクトにコピーできます。
+
+```bash
+# Rust テンプレートをカレントディレクトリに適用
+curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/setup.sh | bash -s -- rust
+
+# テンプレート一覧
+curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/setup.sh | bash -s -- --list
+```
+
+詳細は [devcontainers/README.md](devcontainers/README.md) を参照。
 
 ## ツールの追加方法
 
