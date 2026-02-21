@@ -1,0 +1,12 @@
+version: 3
+
+repositories:
+  - _comment: GitHub Copilot CLI (Linux x64)
+    url: https://github.com/github/copilot-cli/releases/download/v0.0.412/
+    files:
+      - file_name: copilot-linux-x64.tar.gz
+        encoding: tar+gzip
+        extract: copilot
+        rename: copilot
+        out_dir: $BOOTKIT_INSTALL_DIR
+        mode: "0755"

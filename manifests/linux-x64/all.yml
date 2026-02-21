@@ -1,0 +1,53 @@
+version: 3
+
+repositories:
+  - _comment: OpenAI Codex CLI (Linux x64)
+    url: https://github.com/openai/codex/releases/download/rust-v0.104.0/
+    files:
+      - file_name: codex-x86_64-unknown-linux-musl.tar.gz
+        encoding: tar+gzip
+        extract: codex-x86_64-unknown-linux-musl
+        rename: codex
+        out_dir: $BOOTKIT_INSTALL_DIR
+        mode: "0755"
+
+  - _comment: GitHub Copilot CLI (Linux x64)
+    url: https://github.com/github/copilot-cli/releases/download/v0.0.412/
+    files:
+      - file_name: copilot-linux-x64.tar.gz
+        encoding: tar+gzip
+        extract: copilot
+        rename: copilot
+        out_dir: $BOOTKIT_INSTALL_DIR
+        mode: "0755"
+
+  - _comment: Node.js (Linux x64)
+    url: https://nodejs.org/dist/v24.13.1/
+    files:
+      - file_name: node-v24.13.1-linux-x64.tar.xz
+        encoding: tar+xz
+        out_dir: $BOOTKIT_LIB_DIR
+        symlink:
+          link: $BOOTKIT_LIB_DIR/node
+          target: node-v24.13.1-linux-x64
+
+  - _comment: .gitconfig (Linux x64 profile)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/assets/
+    files:
+      - file_name: gitconfig
+        rename: .gitconfig
+        out_dir: $HOME
+
+  - _comment: .vimrc (Linux x64 profile)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/assets/
+    files:
+      - file_name: vimrc
+        rename: .vimrc
+        out_dir: $HOME
+
+  - _comment: VS Code settings.json (Linux x64 profile)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/assets/
+    files:
+      - file_name: vscode-settings.json
+        rename: settings.json
+        out_dir: $HOME/.config/Code/User

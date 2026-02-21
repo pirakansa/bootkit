@@ -1,0 +1,10 @@
+{
+    "github.copilot.chat.localeOverride": "ja",
+    "markdown-preview-github-styles.colorTheme": "light",
+    "diffEditor.codeLens": true,
+    "editor.renderWhitespace": "all",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "terminal.integrated.suggest.enabled": false,
+    "accessibility.voice.speechLanguage": "ja-JP",
+    "http.systemCertificatesNode": true
+}

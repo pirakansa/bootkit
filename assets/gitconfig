@@ -1,0 +1,11 @@
+# [user]
+# 	email = 
+# 	name = 
+# 	signingkey = 
+[core]
+	quotepath = false
+	editor = vim
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = false

@@ -1,0 +1,9 @@
+version: 3
+
+repositories:
+  - _comment: VS Code settings.json (Linux x64 profile)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/assets/
+    files:
+      - file_name: vscode-settings.json
+        rename: settings.json
+        out_dir: $HOME/.config/Code/User
