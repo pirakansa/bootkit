@@ -80,10 +80,10 @@ install_copilot_cli() {
     exit 1
   fi
 
-  # Archive extracts to: copilot-<target>/copilot
-  local extracted="${tmp_dir}/copilot-${target}/copilot"
+  # Archive extracts to: copilot (flat, no subdirectory)
+  local extracted="${tmp_dir}/copilot"
   if [[ ! -f "$extracted" ]]; then
-    error "アーカイブ内にバイナリ 'copilot-${target}/copilot' が見つかりませんでした。"
+    error "アーカイブ内にバイナリ 'copilot' が見つかりませんでした。"
     exit 1
   fi
 
