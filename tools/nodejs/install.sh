@@ -80,10 +80,10 @@ install_node() {
   mkdir -p "$LIB_DIR"
   ensure_install_dir
 
-  # 既存の同バージョンディレクトリがあれば削除
+  # 既にインストール済みならスキップ
   if [[ -d "${LIB_DIR}/${dir_name}" ]]; then
-    warn "既存のディレクトリを上書きします: ${LIB_DIR}/${dir_name}"
-    rm -rf "${LIB_DIR}/${dir_name}"
+    ok "Node.js (${NODE_VERSION}) は既にインストールされています: ${LIB_DIR}/${dir_name}"
+    return 0
   fi
 
   # ダウンロード & 展開 → ~/.local/lib/node-v24.13.1-linux-x64/
