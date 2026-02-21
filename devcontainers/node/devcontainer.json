@@ -1,0 +1,15 @@
+{
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "onCreateCommand": "sudo apt-get update && sudo apt-get install -y openssh-client",
+    "mounts": [
+        "source=${localEnv:HOME}/.codex,target=/home/node/.codex,type=bind,consistency=cached"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/work/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+    "workspaceFolder": "/work/${localWorkspaceFolderBasename}",
+    "remoteUser": "node",
+    "remoteEnv": {
+        "PATH": "${containerEnv:PATH}:/home/node/.local/bin"
+    }
+}

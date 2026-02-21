@@ -1,28 +1,20 @@
 {
-  "name": "Go",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "features": {
-    "ghcr.io/devcontainers/features/common-utils:2": {},
-    "ghcr.io/devcontainers/features/git:1": {}
-  },
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "golang.go",
-        "usernamehw.errorlens"
-      ],
-      "settings": {
-        "go.lintTool": "golangci-lint",
-        "go.lintOnSave": "workspace",
-        "editor.formatOnSave": true,
-        "[go]": {
-          "editor.defaultFormatter": "golang.go"
+    "initializeCommand": "${localWorkspaceFolder}/.devcontainer/init.sh",
+    "onCreateCommand": "sudo apt-get update && sudo apt-get install -y openssh-client",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "CONTAINER_USERNAME": "${localEnv:USERNAME:builder}",
+            "CONTAINER_USERID": "${localEnv:USERID:1000}"
         }
-      }
+    },
+    "mounts": [
+        "source=${localEnv:HOME}/.codex,target=/home/${localEnv:USERNAME:builder}/.codex,type=bind,consistency=cached"
+    ],
+    "workspaceMount": "source=${localWorkspaceFolder},target=/work/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+    "workspaceFolder": "/work/${localWorkspaceFolderBasename}",
+    "remoteUser": "${localEnv:USERNAME:builder}",
+    "remoteEnv": {
+        "PATH": "${containerEnv:PATH}:/home/${localEnv:USERNAME:builder}/.local/bin"
     }
-  },
-  "postCreateCommand": "go version",
-  "remoteUser": "vscode"
 }
