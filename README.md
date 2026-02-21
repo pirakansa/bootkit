@@ -39,30 +39,6 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/co
 | `vimrc` | `.vimrc` テンプレート | `manifests/common/vimrc.yml` |
 | `vscode-settings` | VS Code `settings.json` テンプレート | `manifests/common/vscode-settings.yml` |
 
-> 対象プラットフォームは **Linux x64** のみです。
->
-> `gitconfig` / `vimrc` / `vscode-settings` は `assets/` 配下の設定ファイルとして扱い、既存ファイルを上書きしません。
-
-## オプション
-
-保存先（固定）:
-
-- `codex`, `copilot-cli`: `$HOME/.local/bin`
-- `nodejs`: `$HOME/.local/lib` （`$HOME/.local/lib/node` にシンボリックリンク作成）
-- `gitconfig`: `$HOME/.gitconfig`
-- `vimrc`: `$HOME/.vimrc`
-- `vscode-settings`: `$HOME/.config/Code/User/settings.json`
-
-前提コマンド:
-
-- `ppkgmgr`
-
-例：codex をインストールする場合
-
-```bash
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
-```
-
 ## ディレクトリ構成
 
 ```
