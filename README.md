@@ -1,28 +1,10 @@
 # bootkit
 
-個人用ツールインストーラー。`curl | bash` で各種 CLI ツールをセットアップします。
+個人用ツールインストーラー。`ppkgmgr` + マニフェストで各種 CLI ツールをセットアップします。
 
 実体のインストールは `ppkgmgr` + マニフェストで実行します（Linux x64 専用）。
 
 ## 使い方
-
-### 特定のツールをインストール
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/install.sh | bash -s -- codex
-```
-
-### 全ツールを一括インストール
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/install.sh | bash -s -- --all
-```
-
-### 利用可能なツール一覧
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/install.sh | bash -s -- --list
-```
 
 ### マニフェストを直接指定してインストール
 
@@ -44,12 +26,6 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/li
 
 # vscode-settings (上書きなし)
 ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/vscode-settings.yml
-
-# 全バイナリ (上書きあり)
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/all-binaries.yml
-
-# 全設定ファイル (上書きなし)
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/all-assets.yml
 ```
 
 ## 利用可能なツール
@@ -81,27 +57,19 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/li
 例：インストール先を変更する場合
 
 ```bash
-BOOTKIT_INSTALL_DIR=/usr/local/bin curl -fsSL .../install.sh | bash -s -- codex
+BOOTKIT_INSTALL_DIR=/usr/local/bin ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
 ```
 
 ## ディレクトリ構成
 
 ```
 bootkit/
-├── install.sh            # メインディスパッチャー
 ├── assets/               # 設定ファイル実体
 │   ├── gitconfig
 │   ├── vimrc
 │   └── vscode-settings.json
 ├── manifests/
 │   └── linux-x64/        # ppkgmgr マニフェスト群
-├── tools/
-│   ├── codex/
-│   ├── copilot-cli/
-│   ├── gitconfig/
-│   ├── nodejs/
-│   ├── vimrc/
-│   └── vscode-settings/
 ├── devcontainers/
 │   ├── setup.sh          # devcontainer セットアップスクリプト
 │   ├── rust/             # Rust テンプレート
@@ -117,10 +85,10 @@ bootkit/
 
 ```bash
 # Rust テンプレートをカレントディレクトリに適用
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/setup.sh | bash -s -- rust
+./devcontainers/setup.sh rust
 
 # テンプレート一覧
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/setup.sh | bash -s -- --list
+./devcontainers/setup.sh --list
 ```
 
 詳細は [devcontainers/README.md](devcontainers/README.md) を参照。
@@ -129,11 +97,4 @@ curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainer
 
 1. `manifests/linux-x64/<tool>.yml` を作成
 2. 必要なら `assets/` に設定ファイル実体を追加
-3. `install.sh` の `TOOLS` 配列と `manifest_url_for_tool()` にツール名を追加
-4. `manifests/linux-x64/all-binaries.yml` または `manifests/linux-x64/all-assets.yml` に追加
-
-## アンインストール
-
-```bash
-rm ~/.local/bin/<tool-name>
-```
+3. README の「マニフェストを直接指定してインストール」にコマンド例を追加

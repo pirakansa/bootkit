@@ -1,6 +1,6 @@
 # devcontainers
 
-各言語向けの Dev Container テンプレート集。`curl | bash` でプロジェクトに `.devcontainer/` をセットアップします。
+各言語向けの Dev Container テンプレート集。ローカルの `setup.sh` でプロジェクトに `.devcontainer/` をセットアップします。
 
 ## 使い方
 
@@ -8,16 +8,16 @@
 
 ```bash
 # カレントディレクトリのプロジェクトに適用
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/setup.sh | bash -s -- rust
+./devcontainers/setup.sh rust
 
 # 指定ディレクトリに適用
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/setup.sh | bash -s -- go ~/projects/myapp
+./devcontainers/setup.sh go ~/projects/myapp
 ```
 
 ### 利用可能なテンプレート一覧
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/setup.sh | bash -s -- --list
+./devcontainers/setup.sh --list
 ```
 
 ## テンプレート
