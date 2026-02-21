@@ -27,12 +27,34 @@ curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/install.sh |
 ### マニフェストを直接指定してインストール
 
 ```bash
+# codex (上書きあり)
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
+
+# copilot-cli (上書きあり)
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml
+
+# nodejs (上書きあり)
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/nodejs.yml
+
+# gitconfig (上書きなし)
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/gitconfig.yml
+
+# vimrc (上書きなし)
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/vimrc.yml
+
+# vscode-settings (上書きなし)
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/vscode-settings.yml
+
+# 全バイナリ (上書きあり)
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/all-binaries.yml
+
+# 全設定ファイル (上書きなし)
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/all-assets.yml
 ```
 
 ## 利用可能なツール
 
-| ツール | 説明 | バージョン指定 |
+| ツール | 説明 | マニフェスト |
 |---|---|---|
 | `codex` | [OpenAI Codex CLI](https://github.com/openai/codex) | `manifests/linux-x64/codex.yml` |
 | `copilot-cli` | [GitHub Copilot CLI](https://github.com/github/copilot-cli) | `manifests/linux-x64/copilot-cli.yml` |
@@ -42,6 +64,8 @@ ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/
 | `vscode-settings` | VS Code `settings.json` テンプレート | `manifests/linux-x64/vscode-settings.yml` |
 
 > 対象プラットフォームは **Linux x64** のみです。
+>
+> `gitconfig` / `vimrc` / `vscode-settings` は `assets/` 配下の設定ファイルとして扱い、既存ファイルを上書きしません。
 
 ## オプション
 
@@ -106,7 +130,7 @@ curl -fsSL https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainer
 1. `manifests/linux-x64/<tool>.yml` を作成
 2. 必要なら `assets/` に設定ファイル実体を追加
 3. `install.sh` の `TOOLS` 配列と `manifest_url_for_tool()` にツール名を追加
-4. `manifests/linux-x64/all.yml` にも同じエントリを追加
+4. `manifests/linux-x64/all-binaries.yml` または `manifests/linux-x64/all-assets.yml` に追加
 
 ## アンインストール
 

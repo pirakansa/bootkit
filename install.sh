@@ -70,6 +70,14 @@ manifest_url_for_tool() {
   esac
 }
 
+is_asset_tool() {
+  local tool="$1"
+  case "$tool" in
+    gitconfig|vimrc|vscode-settings) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
 # ─── Usage ────────────────────────────────────────────────────────────────────
 usage() {
   cat <<EOF
@@ -99,15 +107,52 @@ install_tool() {
   info "=== ${tool} のインストールを開始 ==="
   info "マニフェスト: ${manifest_url}"
 
-  if ! ppkgmgr dl --overwrite "$manifest_url"; then
-    error "ppkgmgr によるインストールに失敗しました: ${tool}"
-    return 1
+  if is_asset_tool "$tool"; then
+    info "設定ファイルのため既存ファイルは上書きしません"
+    if ! ppkgmgr dl "$manifest_url"; then
+      error "ppkgmgr によるインストールに失敗しました: ${tool}"
+      return 1
+    fi
+  else
+    if ! ppkgmgr dl --overwrite "$manifest_url"; then
+      error "ppkgmgr によるインストールに失敗しました: ${tool}"
+      return 1
+    fi
   fi
 
   if [[ "$tool" == "nodejs" ]]; then
     info "PATH に以下を追加してください:"
     printf "  ${BOLD}export PATH=\"%s/node/bin:\$PATH\"${RESET}\n" "${BOOTKIT_LIB_DIR:-$HOME/.local/lib}"
   fi
+}
+
+install_all() {
+  local binaries_manifest="${MANIFEST_BASE_URL}/all-binaries.yml"
+  local assets_manifest="${MANIFEST_BASE_URL}/all-assets.yml"
+
+  info "全ツールをインストールします"
+  echo ""
+
+  info "バイナリをインストールします（上書きあり）"
+  info "マニフェスト: ${binaries_manifest}"
+  if ! ppkgmgr dl --overwrite "${binaries_manifest}"; then
+    error "ppkgmgr によるバイナリインストールに失敗しました。"
+    exit 1
+  fi
+
+  echo ""
+  info "設定ファイルをインストールします（上書きなし）"
+  info "マニフェスト: ${assets_manifest}"
+  if ! ppkgmgr dl "${assets_manifest}"; then
+    error "ppkgmgr による設定ファイルインストールに失敗しました。"
+    exit 1
+  fi
+
+  echo ""
+  info "PATH に以下を追加してください:"
+  printf "  ${BOLD}export PATH=\"%s:\$PATH\"${RESET}\n" "${BOOTKIT_INSTALL_DIR}"
+  printf "  ${BOLD}export PATH=\"%s/node/bin:\$PATH\"${RESET}\n" "${BOOTKIT_LIB_DIR}"
+  ok "全ツールのインストールが完了しました！"
 }
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
@@ -133,15 +178,7 @@ main() {
       exit 0
       ;;
     --all|-a)
-      info "全ツールをインストールします"
-      echo ""
-      info "マニフェスト: ${MANIFEST_BASE_URL}/all.yml"
-      ppkgmgr dl --overwrite "${MANIFEST_BASE_URL}/all.yml"
-      echo ""
-      info "PATH に以下を追加してください:"
-      printf "  ${BOLD}export PATH=\"%s:\$PATH\"${RESET}\n" "${BOOTKIT_INSTALL_DIR}"
-      printf "  ${BOLD}export PATH=\"%s/node/bin:\$PATH\"${RESET}\n" "${BOOTKIT_LIB_DIR}"
-      ok "全ツールのインストールが完了しました！"
+      install_all
       ;;
     *)
       local tool="$1"
