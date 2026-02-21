@@ -1,7 +1,7 @@
 version: 3
 
 repositories:
-  - _comment: .gitconfig (Linux x64 profile)
+  - _comment: .gitconfig
     url: https://raw.githubusercontent.com/pirakansa/bootkit/main/assets/
     files:
       - file_name: gitconfig
