@@ -8,5 +8,5 @@ repositories:
         encoding: tar+gzip
         extract: codex-x86_64-unknown-linux-musl
         rename: codex
-        out_dir: $BOOTKIT_INSTALL_DIR
+        out_dir: $HOME/.local/bin
         mode: "0755"

@@ -6,7 +6,7 @@ repositories:
     files:
       - file_name: node-v24.13.1-linux-x64.tar.xz
         encoding: tar+xz
-        out_dir: $BOOTKIT_LIB_DIR
+        out_dir: $HOME/.local/lib
         symlink:
-          link: $BOOTKIT_LIB_DIR/node
+          link: $HOME/.local/lib/node
           target: node-v24.13.1-linux-x64

@@ -45,19 +45,22 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/li
 
 ## オプション
 
-| 環境変数 | 説明 | デフォルト |
-|---|---|---|
-| `BOOTKIT_INSTALL_DIR` | インストール先ディレクトリ | `~/.local/bin` |
-| `BOOTKIT_LIB_DIR` | ライブラリ配置先 (nodejs等) | `~/.local/lib` |
+保存先（固定）:
+
+- `codex`, `copilot-cli`: `$HOME/.local/bin`
+- `nodejs`: `$HOME/.local/lib` （`$HOME/.local/lib/node` にシンボリックリンク作成）
+- `gitconfig`: `$HOME/.gitconfig`
+- `vimrc`: `$HOME/.vimrc`
+- `vscode-settings`: `$HOME/.config/Code/User/settings.json`
 
 前提コマンド:
 
 - `ppkgmgr`
 
-例：インストール先を変更する場合
+例：codex をインストールする場合
 
 ```bash
-BOOTKIT_INSTALL_DIR=/usr/local/bin ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
 ```
 
 ## ディレクトリ構成
