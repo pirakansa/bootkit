@@ -1,10 +1,18 @@
 {
     "github.copilot.chat.localeOverride": "ja",
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "chat.useAgentsMdFile": true,
     "markdown-preview-github-styles.colorTheme": "light",
     "diffEditor.codeLens": true,
-    "editor.renderWhitespace": "all",
-    "github.copilot.nextEditSuggestions.enabled": true,
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.accessibilitySupport": "off",
     "terminal.integrated.suggest.enabled": false,
     "accessibility.voice.speechLanguage": "ja-JP",
-    "http.systemCertificatesNode": true
+    "http.systemCertificatesNode": true,
+    "dev.containers.defaultFeatures": {
+        "ghcr.io/pirakansa/bootkit/persistence:latest": {
+            "codex": true
+        }
+    }
 }
