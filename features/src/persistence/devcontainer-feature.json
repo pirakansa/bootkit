@@ -1,7 +1,7 @@
 {
     "name": "persistence",
     "id": "persistence",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "A feature to persist userland data across containers",
     "options": {
         "claude": {
@@ -22,7 +22,12 @@
         "copilot-cli": {
             "type": "boolean",
             "default": false,
-            "description": "Mount GitHub Copilot CLI config (`~/.config/copilot`) via volume."
+            "description": "Mount GitHub Copilot CLI config (`~/.copilot`) via volume."
+        },
+        "gh-cli": {
+            "type": "boolean",
+            "default": false,
+            "description": "Mount GitHub CLI config (`~/.config/gh`) via volume."
         }
     },
     "mounts": [

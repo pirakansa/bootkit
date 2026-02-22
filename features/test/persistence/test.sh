@@ -48,6 +48,7 @@ check "persistence gemini exists" bash -c "[ -d /usr/local/share/persistence/gem
 check "persistence google-vscode-extension exists" bash -c "[ -d /usr/local/share/persistence/google-vscode-extension ]"
 check "persistence cloud-code exists" bash -c "[ -d /usr/local/share/persistence/cloud-code ]"
 check "persistence copilot-cli exists" bash -c "[ -d /usr/local/share/persistence/copilot-cli ]"
+check "persistence gh-cli exists" bash -c "[ -d /usr/local/share/persistence/gh-cli ]"
 check "user local bin exists" bash -c "[ -d \"$HOME/.local/bin\" ]"
 check "user local bin owner" bash -c 'owner="$(stat -c "%U:%G" "$HOME/.local/bin")"; [ "$owner" = "$(id -un):$(id -gn)" ]'
 

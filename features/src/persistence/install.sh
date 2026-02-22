@@ -51,7 +51,8 @@ initialize_persistence_layout() {
         "gemini" \
         "google-vscode-extension" \
         "cloud-code" \
-        "copilot-cli"
+        "copilot-cli" \
+        "gh-cli"
     do
         install -d -m 777 "$PERSIST_ROOT/$persist_dir_name"
         chmod -R 777 "$PERSIST_ROOT/$persist_dir_name"
@@ -135,6 +136,10 @@ fi
 
 if is_enabled "${COPILOT_CLI:-false}"; then
     link_persistence "copilot-cli" ".copilot"
+fi
+
+if is_enabled "${GH_CLI:-false}"; then
+    link_persistence "gh-cli" ".config/gh"
 fi
 
 install_persistent_bin_sync_command
