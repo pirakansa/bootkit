@@ -85,7 +85,15 @@ sync_persistent_bin() {
     install -d -m 777 "$PERSIST_BIN_DIR"
     initialize_target_local_bin
 
-    find "$PERSIST_BIN_DIR" -mindepth 1 -maxdepth 1 \( -type f -o -type l \) | while IFS= read -r src_path; do
+    for src_path in "$PERSIST_BIN_DIR"/*; do
+        if [ ! -e "$src_path" ] && [ ! -L "$src_path" ]; then
+            continue
+        fi
+
+        if [ -d "$src_path" ]; then
+            continue
+        fi
+
         bin_name="$(basename "$src_path")"
         dest_path="$target_bin_dir/$bin_name"
 
