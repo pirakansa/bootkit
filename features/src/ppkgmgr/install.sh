@@ -1,29 +1,27 @@
 #!/bin/sh
 set -e
 
-echo "Activating feature 'hello'"
+if [ "$(id -u)" -ne 0 ]; then
+    echo "Script must be run as root."
+    # exit 1
+fi
 
-GREETING=${GREETING:-undefined}
-echo "The provided greeting is: $GREETING"
+if ! command -v curl >/dev/null 2>&1; then
+    echo "curl is required to install ppkgmgr."
+    # exit 1
+    apt-get update && \
+    apt-get install -y --no-install-recommends curl ca-certificates && \
+    apt-get clean
+fi
 
-# The 'install.sh' entrypoint script is always executed as the root user.
-#
-# These following environment variables are passed in by the dev container CLI.
-# These may be useful in instances where the context of the final 
-# remoteUser or containerUser is useful.
-# For more details, see https://containers.dev/implementors/features#user-env-var
-echo "The effective dev container remoteUser is '$_REMOTE_USER'"
-echo "The effective dev container remoteUser's home directory is '$_REMOTE_USER_HOME'"
+echo "Installing ppkgmgr..."
 
-echo "The effective dev container containerUser is '$_CONTAINER_USER'"
-echo "The effective dev container containerUser's home directory is '$_CONTAINER_USER_HOME'"
+curl -fsSL https://raw.githubusercontent.com/pirakansa/ppkgmgr/main/install.sh | bash
+$HOME/.local/bin/ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
+$HOME/.local/bin/ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml
+mv $HOME/.local/bin/* /usr/local/bin/
 
-cat > /usr/local/bin/hello \
-<< EOF
-#!/bin/sh
-RED='\033[0;91m'
-NC='\033[0m' # No Color
-echo "\${RED}${GREETING}, \$(whoami)!\${NC}"
-EOF
-
-chmod +x /usr/local/bin/hello
+INSTALL_DIR="/usr/local/share/persistence"
+if [ ! -d "$INSTALL_DIR" ]; then
+    mkdir -p "$INSTALL_DIR"
+fi

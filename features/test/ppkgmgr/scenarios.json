@@ -1,0 +1,26 @@
+{
+    "default": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "features": {
+            "ppkgmgr": {}
+        }
+    },
+    "golang": {
+        "image": "golang:1.24-bookworm",
+        "features": {
+            "ppkgmgr": {}
+        }
+    },
+    "ubuntu2404": {
+        "image": "ubuntu:24.04",
+        "features": {
+            "ppkgmgr": {}
+        }
+    },
+    "node": {
+        "image": "node:24-bookworm-slim",
+        "features": {
+            "ppkgmgr": {}
+        }
+    }
+}

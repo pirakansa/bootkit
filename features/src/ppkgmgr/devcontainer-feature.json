@@ -1,22 +1,35 @@
 {
     "name": "install ppkgmgr",
     "id": "ppkgmgr",
-    "version": "0.1.2",
+    "version": "0.1.0",
     "description": "A feature to install ppkgmgr",
     "options": {
-        "greeting": {
-            "type": "string",
-            "proposals": [
-                "hey",
-                "hello",
-                "hi",
-                "howdy"
-            ],
-            "default": "hey",
-            "description": "Select a pre-made greeting, or enter your own"
+        "claude": {
+            "type": "boolean",
+            "default": false,
+            "description": "Mount Claude Code config (`~/.claude`) via volume."
+        },
+        "codex": {
+            "type": "boolean",
+            "default": false,
+            "description": "Mount Codex config (`~/.codex`) via volume."
+        },
+        "gemini": {
+            "type": "boolean",
+            "default": false,
+            "description": "Mount Gemini Code Assist config (`~/.gemini`) and caches (`~/.cache/google-vscode-extension`, `~/.cache/cloud-code`) via volumes."
+        },
+        "copilot-cli": {
+            "type": "boolean",
+            "default": false,
+            "description": "Mount GitHub Copilot CLI config (`~/.config/copilot`) via volume."
         }
     },
-    "installsAfter": [
-        "ghcr.io/devcontainers/features/common-utils"
+    "mounts": [
+        {
+            "source": "persistence",
+            "target": "/usr/local/share/persistence",
+            "type": "volume"
+        }
     ]
 }
