@@ -23,9 +23,4 @@ RUN install --owner=${CONTAINER_USERNAME} --directory /work && \
 
 USER ${CONTAINER_USERNAME}
 
-RUN curl -fsSL https://raw.githubusercontent.com/pirakansa/ppkgmgr/main/install.sh | bash && \
-    /home/${CONTAINER_USERNAME}/.local/bin/ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml && \
-    /home/${CONTAINER_USERNAME}/.local/bin/ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml && \
-    echo "finished downloading packages"
-
 WORKDIR /work
