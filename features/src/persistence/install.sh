@@ -134,7 +134,7 @@ if is_enabled "${GEMINI:-false}"; then
 fi
 
 if is_enabled "${COPILOT_CLI:-false}"; then
-    link_persistence "copilot-cli" ".config/copilot"
+    link_persistence "copilot-cli" ".copilot"
 fi
 
 install_persistent_bin_sync_command

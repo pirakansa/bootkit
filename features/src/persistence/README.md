@@ -23,7 +23,7 @@ Persist userland data across dev containers by mounting host-side volumes.
 | claude | Mount Claude Code config (`~/.claude`) via volume. | boolean | false |
 | codex | Mount Codex config (`~/.codex`) via volume. | boolean | false |
 | gemini | Mount Gemini Code Assist config and cache directories via volumes. | boolean | false |
-| copilot-cli | Mount GitHub Copilot CLI config (`~/.config/copilot`) via volume. | boolean | false |
+| copilot-cli | Mount GitHub Copilot CLI config (`~/.copilot`) via volume. | boolean | false |
 
 ## Persistent bin
 
