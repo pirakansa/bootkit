@@ -22,5 +22,14 @@
         "features": {
             "persistence": {}
         }
+    },
+    "codex": {
+        "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+        "remoteUser": "root",
+        "features": {
+            "persistence": {
+                "codex": true
+            }
+        }
     }
 }
