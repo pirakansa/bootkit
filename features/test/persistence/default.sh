@@ -41,6 +41,8 @@ source dev-container-features-test-lib
 # The 'check' command comes from the dev-container-features-test-lib. Syntax is...
 # check <LABEL> <cmd> [args...]
 check "runs as vscode" bash -c "[ \"$(id -un)\" = \"vscode\" ]"
+check "vscode local bin exists" bash -c "[ -d /home/vscode/.local/bin ]"
+check "vscode local bin owner" bash -c "[ \"$(stat -c '%U:%G' /home/vscode/.local/bin)\" = \"vscode:vscode\" ]"
 check "codex symlink exists" bash -c "[ -L /home/vscode/.codex ]"
 check "codex symlink target" bash -c "[ \"$(readlink /home/vscode/.codex)\" = \"/usr/local/share/persistence/codex\" ]"
 

@@ -27,8 +27,21 @@ is_enabled() {
     esac
 }
 
+initialize_target_local_bin() {
+    target_local_dir="$TARGET_HOME/.local"
+    target_bin_dir="$target_local_dir/bin"
+    target_uid="$(stat -c '%u' "$TARGET_HOME")"
+    target_gid="$(stat -c '%g' "$TARGET_HOME")"
+
+    install -d -m 755 "$target_local_dir"
+    install -d -m 755 "$target_bin_dir"
+
+    chown "$target_uid:$target_gid" "$target_local_dir" "$target_bin_dir"
+}
+
 initialize_persistence_layout() {
     install -d -m 777 "$PERSIST_ROOT"
+    initialize_target_local_bin
 
     for persist_dir_name in \
         "bin" \
@@ -71,7 +84,7 @@ sync_persistent_bin() {
     target_bin_dir="$TARGET_HOME/.local/bin"
 
     install -d -m 777 "$PERSIST_BIN_DIR"
-    install -d -m 777 "$target_bin_dir"
+    initialize_target_local_bin
 
     find "$PERSIST_BIN_DIR" -mindepth 1 -maxdepth 1 -type f | while IFS= read -r src_path; do
         bin_name="$(basename "$src_path")"

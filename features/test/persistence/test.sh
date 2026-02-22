@@ -48,6 +48,8 @@ check "persistence gemini exists" bash -c "[ -d /usr/local/share/persistence/gem
 check "persistence google-vscode-extension exists" bash -c "[ -d /usr/local/share/persistence/google-vscode-extension ]"
 check "persistence cloud-code exists" bash -c "[ -d /usr/local/share/persistence/cloud-code ]"
 check "persistence copilot-cli exists" bash -c "[ -d /usr/local/share/persistence/copilot-cli ]"
+check "root local bin exists" bash -c "[ -d /root/.local/bin ]"
+check "root local bin owner" bash -c "[ "$(stat -c '%U:%G' /root/.local/bin)" = "root:root" ]"
 
 # Report results
 # If any of the checks above exited with a non-zero exit code, the test will fail.
