@@ -9,7 +9,6 @@ fi
 echo "Setting up persistence feature..."
 
 PERSIST_ROOT="/usr/local/share/persistence"
-PERSIST_BIN_DIR="$PERSIST_ROOT/bin"
 TARGET_HOME="${_REMOTE_USER_HOME:-${_CONTAINER_USER_HOME:-}}"
 
 if [ -z "$TARGET_HOME" ]; then
@@ -79,31 +78,43 @@ link_persistence() {
     ln -s "$persist_dir" "$target_path"
 }
 
-sync_persistent_bin() {
-    target_bin_dir="$TARGET_HOME/.local/bin"
+install_persistent_bin_sync_command() {
+    sync_cmd_path="/usr/local/bin/persistence-sync-bin"
 
-    install -d -m 777 "$PERSIST_BIN_DIR"
-    initialize_target_local_bin
+    cat <<'EOF' > "$sync_cmd_path"
+#!/bin/sh
+set -e
 
-    for src_path in "$PERSIST_BIN_DIR"/*; do
-        if [ ! -e "$src_path" ] && [ ! -L "$src_path" ]; then
-            continue
-        fi
+persist_bin_dir="/usr/local/share/persistence/bin"
 
-        if [ -d "$src_path" ]; then
-            continue
-        fi
+if [ -z "$HOME" ] || [ ! -d "$persist_bin_dir" ]; then
+    exit 0
+fi
 
-        bin_name="$(basename "$src_path")"
-        dest_path="$target_bin_dir/$bin_name"
+target_bin_dir="$HOME/.local/bin"
+mkdir -p "$target_bin_dir"
 
-        if [ -e "$dest_path" ] || [ -L "$dest_path" ]; then
-            echo "Skipping existing binary path: $dest_path"
-            continue
-        fi
+for src_path in "$persist_bin_dir"/*; do
+    if [ ! -e "$src_path" ] && [ ! -L "$src_path" ]; then
+        continue
+    fi
 
-        ln -s "$src_path" "$dest_path"
-    done
+    if [ -d "$src_path" ]; then
+        continue
+    fi
+
+    bin_name="$(basename "$src_path")"
+    dest_path="$target_bin_dir/$bin_name"
+
+    if [ -e "$dest_path" ] || [ -L "$dest_path" ]; then
+        continue
+    fi
+
+    ln -s "$src_path" "$dest_path"
+done
+EOF
+
+    chmod 755 "$sync_cmd_path"
 }
 
 initialize_persistence_layout
@@ -126,4 +137,4 @@ if is_enabled "${COPILOT_CLI:-false}"; then
     link_persistence "copilot-cli" ".config/copilot"
 fi
 
-sync_persistent_bin
+install_persistent_bin_sync_command
