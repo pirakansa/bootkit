@@ -1,8 +1,8 @@
 {
-    "name": "install ppkgmgr",
-    "id": "ppkgmgr",
+    "name": "persistence",
+    "id": "persistence",
     "version": "0.1.0",
-    "description": "A feature to install ppkgmgr",
+    "description": "A feature to persist userland data across containers",
     "options": {
         "claude": {
             "type": "boolean",

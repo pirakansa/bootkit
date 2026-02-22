@@ -7,14 +7,14 @@ if [ "$(id -u)" -ne 0 ]; then
 fi
 
 if ! command -v curl >/dev/null 2>&1; then
-    echo "curl is required to install ppkgmgr."
+    echo "curl is required to install the persistence feature."
     # exit 1
     apt-get update && \
     apt-get install -y --no-install-recommends curl ca-certificates && \
     apt-get clean
 fi
 
-echo "Installing ppkgmgr..."
+echo "Setting up persistence feature..."
 
 curl -fsSL https://raw.githubusercontent.com/pirakansa/ppkgmgr/main/install.sh | bash
 $HOME/.local/bin/ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
