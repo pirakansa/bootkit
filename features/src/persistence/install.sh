@@ -86,32 +86,16 @@ sync_persistent_bin() {
     install -d -m 777 "$PERSIST_BIN_DIR"
     initialize_target_local_bin
 
-    find "$PERSIST_BIN_DIR" -mindepth 1 -maxdepth 1 -type f | while IFS= read -r src_path; do
+    find "$PERSIST_BIN_DIR" -mindepth 1 -maxdepth 1 \( -type f -o -type l \) | while IFS= read -r src_path; do
         bin_name="$(basename "$src_path")"
         dest_path="$target_bin_dir/$bin_name"
 
-        if [ -L "$dest_path" ]; then
-            ln -sfn "$src_path" "$dest_path"
-            continue
-        fi
-
-        if [ -e "$dest_path" ]; then
+        if [ -e "$dest_path" ] || [ -L "$dest_path" ]; then
             echo "Skipping existing binary path: $dest_path"
             continue
         fi
 
         ln -s "$src_path" "$dest_path"
-    done
-
-    find "$target_bin_dir" -mindepth 1 -maxdepth 1 -type l | while IFS= read -r link_path; do
-        resolved_path="$(readlink "$link_path" || true)"
-        case "$resolved_path" in
-            "$PERSIST_BIN_DIR"/*)
-                if [ ! -e "$resolved_path" ]; then
-                    rm -f "$link_path"
-                fi
-                ;;
-        esac
     done
 }
 
