@@ -40,8 +40,9 @@ source dev-container-features-test-lib
 # Feature-specific tests
 # The 'check' command comes from the dev-container-features-test-lib. Syntax is...
 # check <LABEL> <cmd> [args...]
-check "persistence root exists" bash -c "[ -d /usr/local/share/persistence ]"
-check "persistence bin exists" bash -c "[ -d /usr/local/share/persistence/bin ]"
+check "runs as vscode" bash -c "[ \"$(id -un)\" = \"vscode\" ]"
+check "codex symlink exists" bash -c "[ -L /home/vscode/.codex ]"
+check "codex symlink target" bash -c "[ \"$(readlink /home/vscode/.codex)\" = \"/usr/local/share/persistence/codex\" ]"
 
 # Report results
 # If any of the checks above exited with a non-zero exit code, the test will fail.

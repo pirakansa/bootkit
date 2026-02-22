@@ -10,7 +10,7 @@ echo "Setting up persistence feature..."
 
 PERSIST_ROOT="/usr/local/share/persistence"
 PERSIST_BIN_DIR="$PERSIST_ROOT/bin"
-TARGET_HOME="${_CONTAINER_USER_HOME:-${_REMOTE_USER_HOME:-}}"
+TARGET_HOME="${_REMOTE_USER_HOME:-${_CONTAINER_USER_HOME:-}}"
 
 if [ -z "$TARGET_HOME" ]; then
     TARGET_HOME="/root"
