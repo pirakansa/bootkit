@@ -27,6 +27,22 @@ is_enabled() {
     esac
 }
 
+initialize_persistence_layout() {
+    mkdir -p "$PERSIST_ROOT"
+
+    for persist_dir_name in \
+        "bin" \
+        "claude" \
+        "codex" \
+        "gemini" \
+        "google-vscode-extension" \
+        "cloud-code" \
+        "copilot-cli"
+    do
+        mkdir -p "$PERSIST_ROOT/$persist_dir_name"
+    done
+}
+
 link_persistence() {
     persist_name="$1"
     relative_target="$2"
@@ -86,7 +102,7 @@ sync_persistent_bin() {
     done
 }
 
-mkdir -p "$PERSIST_ROOT"
+initialize_persistence_layout
 
 if is_enabled "${CLAUDE:-false}"; then
     link_persistence "claude" ".claude"
