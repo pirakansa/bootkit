@@ -28,7 +28,7 @@ is_enabled() {
 }
 
 initialize_persistence_layout() {
-    mkdir -p "$PERSIST_ROOT"
+    install -d -m 777 "$PERSIST_ROOT"
 
     for persist_dir_name in \
         "bin" \
@@ -39,7 +39,7 @@ initialize_persistence_layout() {
         "cloud-code" \
         "copilot-cli"
     do
-        mkdir -p "$PERSIST_ROOT/$persist_dir_name"
+        install -d -m 777 "$PERSIST_ROOT/$persist_dir_name"
     done
 }
 
@@ -51,8 +51,8 @@ link_persistence() {
     target_path="$TARGET_HOME/$relative_target"
     target_parent="$(dirname "$target_path")"
 
-    mkdir -p "$persist_dir"
-    mkdir -p "$target_parent"
+    install -d -m 777 "$persist_dir"
+    install -d -m 777 "$target_parent"
 
     if [ -L "$target_path" ]; then
         ln -sfn "$persist_dir" "$target_path"
@@ -70,8 +70,8 @@ link_persistence() {
 sync_persistent_bin() {
     target_bin_dir="$TARGET_HOME/.local/bin"
 
-    mkdir -p "$PERSIST_BIN_DIR"
-    mkdir -p "$target_bin_dir"
+    install -d -m 777 "$PERSIST_BIN_DIR"
+    install -d -m 777 "$target_bin_dir"
 
     find "$PERSIST_BIN_DIR" -mindepth 1 -maxdepth 1 -type f | while IFS= read -r src_path; do
         bin_name="$(basename "$src_path")"

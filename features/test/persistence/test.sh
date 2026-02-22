@@ -42,6 +42,12 @@ source dev-container-features-test-lib
 # check <LABEL> <cmd> [args...]
 check "persistence root exists" bash -c "[ -d /usr/local/share/persistence ]"
 check "persistence bin exists" bash -c "[ -d /usr/local/share/persistence/bin ]"
+check "persistence claude exists" bash -c "[ -d /usr/local/share/persistence/claude ]"
+check "persistence codex exists" bash -c "[ -d /usr/local/share/persistence/codex ]"
+check "persistence gemini exists" bash -c "[ -d /usr/local/share/persistence/gemini ]"
+check "persistence google-vscode-extension exists" bash -c "[ -d /usr/local/share/persistence/google-vscode-extension ]"
+check "persistence cloud-code exists" bash -c "[ -d /usr/local/share/persistence/cloud-code ]"
+check "persistence copilot-cli exists" bash -c "[ -d /usr/local/share/persistence/copilot-cli ]"
 
 # Report results
 # If any of the checks above exited with a non-zero exit code, the test will fail.
