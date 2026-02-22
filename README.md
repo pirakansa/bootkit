@@ -1,80 +1,90 @@
 # bootkit
 
-個人用ツールインストーラー。`ppkgmgr` + マニフェストで各種 CLI ツールをセットアップします。
+`ppkgmgr` のマニフェストをまとめた、個人用ブートストラップリポジトリです。  
+CLI ツール本体の配布マニフェストと、dotfiles などの設定ファイル配布マニフェストを管理しています。
 
 - `ppkgmgr`: https://github.com/pirakansa/ppkgmgr
 
-## 使い方
-
-### マニフェストを直接指定してインストール
+## クイックスタート
 
 ```bash
-# codex (上書きあり)
+# 例: Codex CLI をインストール（既存ファイルを上書き）
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
 
-# copilot-cli (上書きあり)
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml
-
-# nodejs (上書きあり)
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/nodejs.yml
-
-# gitconfig (上書きなし)
+# 例: .gitconfig を配置（既存ファイルを保持）
 ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml
-
-# vimrc (上書きなし)
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vimrc.yml
-
-# vscode-settings (上書きなし)
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vscode-settings.yml
 ```
 
-## 利用可能なツール
+## 利用可能なマニフェスト
+
+### CLI ツール（Linux x64）
 
 | ツール | 説明 | マニフェスト |
 |---|---|---|
 | `codex` | [OpenAI Codex CLI](https://github.com/openai/codex) | `manifests/linux-x64/codex.yml` |
 | `copilot-cli` | [GitHub Copilot CLI](https://github.com/github/copilot-cli) | `manifests/linux-x64/copilot-cli.yml` |
+| `gh-cli` | [GitHub CLI](https://github.com/cli/cli) | `manifests/linux-x64/gh-cli.yml` |
 | `nodejs` | [Node.js](https://nodejs.org/) | `manifests/linux-x64/nodejs.yml` |
+
+### 設定ファイル（共通）
+
+| ツール | 説明 | マニフェスト |
+|---|---|---|
 | `gitconfig` | `.gitconfig` テンプレート | `manifests/common/gitconfig.yml` |
 | `vimrc` | `.vimrc` テンプレート | `manifests/common/vimrc.yml` |
 | `vscode-settings` | VS Code `settings.json` テンプレート | `manifests/common/vscode-settings.yml` |
+| `devcontainer-go` | Go 用 `.devcontainer` テンプレート | `manifests/common/devcontainer-go.yml` |
+| `devcontainer-node` | Node.js 用 `.devcontainer` テンプレート | `manifests/common/devcontainer-node.yml` |
+| `devcontainer-rust` | Rust 用 `.devcontainer` テンプレート | `manifests/common/devcontainer-rust.yml` |
 
-## ディレクトリ構成
+## マニフェスト適用例
 
-```
-bootkit/
-├── assets/               # 設定ファイル実体
-│   ├── gitconfig
-│   ├── vimrc
-│   └── vscode-settings.json
-├── manifests/
-│   ├── linux-x64/        # Linux x64 バイナリ用マニフェスト
-│   └── common/           # 設定ファイル用マニフェスト
-├── devcontainers/
-│   ├── setup.sh          # devcontainer セットアップスクリプト
-│   ├── rust/             # Rust テンプレート
-│   ├── go/               # Go テンプレート
-│   └── python/           # Python テンプレート
-├── README.md
-└── LICENSE
+```bash
+# CLI 系（上書きあり）
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/gh-cli.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/nodejs.yml
+
+# 設定ファイル系（上書きなし）
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vimrc.yml
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vscode-settings.yml
+
+# Dev Container テンプレート（カレントディレクトリの .devcontainer/ に展開）
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-go.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-node.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-rust.yml
 ```
 
 ## Dev Container テンプレート
 
-各言語向けの devcontainer 設定をプロジェクトにコピーできます。
+`devcontainers/` 以下に、`golang` / `node` / `rust` 向けテンプレートがあります。
+
+`ppkgmgr` で適用する場合（カレントディレクトリの `.devcontainer/` に展開）:
 
 ```bash
-# Rust テンプレートをカレントディレクトリに適用
-./devcontainers/setup.sh rust
-
-# テンプレート一覧
-./devcontainers/setup.sh --list
+ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-go.yml
 ```
 
-詳細は [devcontainers/README.md](devcontainers/README.md) を参照。
+## ディレクトリ構成
 
-## ツールの追加方法
+```text
+bootkit/
+├── assets/                  # 設定ファイル実体
+├── manifests/
+│   ├── linux-x64/           # Linux x64 向けマニフェスト
+│   └── common/              # 共通設定ファイル向けマニフェスト
+├── devcontainers/
+│   ├── golang/              # Go 開発向け devcontainer テンプレート
+│   ├── node/                # Node.js 開発向け devcontainer テンプレート
+│   └── rust/                # Rust 開発向け devcontainer テンプレート
+├── features/                # Dev Container Features 本体とテスト
+└── .github/workflows/       # validate / test / release
+```
 
-1. `manifests/linux-x64/<tool>.yml`（バイナリ）または `manifests/common/<tool>.yml`（設定）を作成
-2. 必要なら `assets/` に設定ファイル実体を追加
-3. README の「マニフェストを直接指定してインストール」にコマンド例を追加
+## 新しいマニフェストを追加する
+
+1. `manifests/linux-x64/<tool>.yml`（バイナリ）または `manifests/common/<tool>.yml`（設定）を追加する。
+2. 必要に応じて `assets/` に実ファイルを追加する。
+3. この `README.md` の一覧と適用例を更新する。

@@ -1,0 +1,13 @@
+version: 3
+
+repositories:
+  - _comment: Dev Container template (Rust)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/rust/
+    files:
+      - file_name: devcontainer.json
+        out_dir: .devcontainer
+      - file_name: Dockerfile
+        out_dir: .devcontainer
+      - file_name: init.sh
+        out_dir: .devcontainer
+        mode: "0755"

@@ -1,0 +1,10 @@
+version: 3
+
+repositories:
+  - _comment: Dev Container template (Node.js)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/node/
+    files:
+      - file_name: devcontainer.json
+        out_dir: .devcontainer
+      - file_name: Dockerfile
+        out_dir: .devcontainer
