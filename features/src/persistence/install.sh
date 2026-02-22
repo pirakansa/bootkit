@@ -42,6 +42,8 @@ initialize_target_local_bin() {
 initialize_persistence_layout() {
     install -d -m 777 "$PERSIST_ROOT"
     initialize_target_local_bin
+    target_uid="$(stat -c '%u' "$TARGET_HOME")"
+    target_gid="$(stat -c '%g' "$TARGET_HOME")"
 
     for persist_dir_name in \
         "bin" \
@@ -53,6 +55,8 @@ initialize_persistence_layout() {
         "copilot-cli"
     do
         install -d -m 777 "$PERSIST_ROOT/$persist_dir_name"
+        chmod -R 777 "$PERSIST_ROOT/$persist_dir_name"
+        chown -R "$target_uid:$target_gid" "$PERSIST_ROOT/$persist_dir_name"
     done
 }
 
