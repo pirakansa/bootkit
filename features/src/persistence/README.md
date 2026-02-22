@@ -25,6 +25,13 @@ Persist userland data across dev containers by mounting host-side volumes.
 | gemini | Mount Gemini Code Assist config and cache directories via volumes. | boolean | false |
 | copilot-cli | Mount GitHub Copilot CLI config (`~/.config/copilot`) via volume. | boolean | false |
 
+## Persistent bin
+
+- Use `/usr/local/share/persistence/bin` as a persistent location for custom executables.
+- During Feature install, files in that directory are symlinked into `/usr/local/bin`.
+- If `/usr/local/bin/<name>` already exists as a regular file, it is kept as-is and not overwritten.
+- If you add or remove files in the persistent bin later, re-run the Feature (for example by rebuild/recreate) to resync links.
+
 
 
 ---
