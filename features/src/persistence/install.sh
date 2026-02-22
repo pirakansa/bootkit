@@ -67,12 +67,7 @@ link_persistence() {
     install -d -m 777 "$persist_dir"
     install -d -m 777 "$target_parent"
 
-    if [ -L "$target_path" ]; then
-        ln -sfn "$persist_dir" "$target_path"
-        return 0
-    fi
-
-    if [ -e "$target_path" ]; then
+    if [ -e "$target_path" ] || [ -L "$target_path" ]; then
         echo "Skipping existing path: $target_path"
         return 0
     fi
