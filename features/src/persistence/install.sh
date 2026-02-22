@@ -9,6 +9,8 @@ fi
 echo "Setting up persistence feature..."
 
 PERSIST_ROOT="/usr/local/share/persistence"
+PERSIST_BIN_DIR="$PERSIST_ROOT/bin"
+SYSTEM_BIN_DIR="/usr/local/bin"
 TARGET_HOME="${_CONTAINER_USER_HOME:-${_REMOTE_USER_HOME:-}}"
 
 if [ -z "$TARGET_HOME" ]; then
@@ -50,6 +52,39 @@ link_persistence() {
     ln -s "$persist_dir" "$target_path"
 }
 
+sync_persistent_bin() {
+    mkdir -p "$PERSIST_BIN_DIR"
+    mkdir -p "$SYSTEM_BIN_DIR"
+
+    find "$PERSIST_BIN_DIR" -mindepth 1 -maxdepth 1 -type f | while IFS= read -r src_path; do
+        bin_name="$(basename "$src_path")"
+        dest_path="$SYSTEM_BIN_DIR/$bin_name"
+
+        if [ -L "$dest_path" ]; then
+            ln -sfn "$src_path" "$dest_path"
+            continue
+        fi
+
+        if [ -e "$dest_path" ]; then
+            echo "Skipping existing binary path: $dest_path"
+            continue
+        fi
+
+        ln -s "$src_path" "$dest_path"
+    done
+
+    find "$SYSTEM_BIN_DIR" -mindepth 1 -maxdepth 1 -type l | while IFS= read -r link_path; do
+        resolved_path="$(readlink "$link_path" || true)"
+        case "$resolved_path" in
+            "$PERSIST_BIN_DIR"/*)
+                if [ ! -e "$resolved_path" ]; then
+                    rm -f "$link_path"
+                fi
+                ;;
+        esac
+    done
+}
+
 mkdir -p "$PERSIST_ROOT"
 
 if is_enabled "${CLAUDE:-false}"; then
@@ -69,3 +104,5 @@ fi
 if is_enabled "${COPILOT_CLI:-false}"; then
     link_persistence "copilot-cli" ".config/copilot"
 fi
+
+sync_persistent_bin

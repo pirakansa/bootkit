@@ -41,6 +41,7 @@ source dev-container-features-test-lib
 # The 'check' command comes from the dev-container-features-test-lib. Syntax is...
 # check <LABEL> <cmd> [args...]
 check "persistence root exists" bash -c "[ -d /usr/local/share/persistence ]"
+check "persistence bin exists" bash -c "[ -d /usr/local/share/persistence/bin ]"
 
 # Report results
 # If any of the checks above exited with a non-zero exit code, the test will fail.
