@@ -28,8 +28,9 @@ Persist userland data across dev containers by mounting host-side volumes.
 ## Persistent bin
 
 - Use `/usr/local/share/persistence/bin` as a persistent location for custom executables.
-- During Feature install, files in that directory are symlinked into `/usr/local/bin`.
-- If `/usr/local/bin/<name>` already exists as a regular file, it is kept as-is and not overwritten.
+- During Feature install, files in that directory are symlinked into `~/.local/bin`.
+- If `~/.local/bin/<name>` already exists as a regular file, it is kept as-is and not overwritten.
+- Ensure `~/.local/bin` is in your PATH, for example: `export PATH="$HOME/.local/bin:$PATH"`.
 - If you add or remove files in the persistent bin later, re-run the Feature (for example by rebuild/recreate) to resync links.
 
 

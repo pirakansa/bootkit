@@ -10,7 +10,6 @@ echo "Setting up persistence feature..."
 
 PERSIST_ROOT="/usr/local/share/persistence"
 PERSIST_BIN_DIR="$PERSIST_ROOT/bin"
-SYSTEM_BIN_DIR="/usr/local/bin"
 TARGET_HOME="${_CONTAINER_USER_HOME:-${_REMOTE_USER_HOME:-}}"
 
 if [ -z "$TARGET_HOME" ]; then
@@ -53,12 +52,14 @@ link_persistence() {
 }
 
 sync_persistent_bin() {
+    target_bin_dir="$TARGET_HOME/.local/bin"
+
     mkdir -p "$PERSIST_BIN_DIR"
-    mkdir -p "$SYSTEM_BIN_DIR"
+    mkdir -p "$target_bin_dir"
 
     find "$PERSIST_BIN_DIR" -mindepth 1 -maxdepth 1 -type f | while IFS= read -r src_path; do
         bin_name="$(basename "$src_path")"
-        dest_path="$SYSTEM_BIN_DIR/$bin_name"
+        dest_path="$target_bin_dir/$bin_name"
 
         if [ -L "$dest_path" ]; then
             ln -sfn "$src_path" "$dest_path"
@@ -73,7 +74,7 @@ sync_persistent_bin() {
         ln -s "$src_path" "$dest_path"
     done
 
-    find "$SYSTEM_BIN_DIR" -mindepth 1 -maxdepth 1 -type l | while IFS= read -r link_path; do
+    find "$target_bin_dir" -mindepth 1 -maxdepth 1 -type l | while IFS= read -r link_path; do
         resolved_path="$(readlink "$link_path" || true)"
         case "$resolved_path" in
             "$PERSIST_BIN_DIR"/*)
