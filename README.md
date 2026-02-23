@@ -69,7 +69,7 @@ ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/
 
 ## Dev Container マニフェスト（ppkgmgr 入口）
 
-`devcontainers/` 以下に、`go` / `node` / `rust` 向けの元ファイルがあります。  
+`devcontainers/` 以下に、`go` / `node` / `rust` 向けの devcontainer 定義ファイルがあります。  
 各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します:
 
 ```bash
@@ -88,9 +88,9 @@ bootkit/
 │   ├── common/              # 共通設定ファイル向けマニフェスト
 │   └── devcontainers/       # Dev Container 向けマニフェスト
 ├── devcontainers/
-│   ├── go/                  # Go 開発向け devcontainer 元ファイル
-│   ├── node/                # Node.js 開発向け devcontainer テンプレート
-│   └── rust/                # Rust 開発向け devcontainer テンプレート
+│   ├── go/                  # Go 開発向け devcontainer 定義ファイル
+│   ├── node/                # Node.js 開発向け devcontainer 定義ファイル
+│   └── rust/                # Rust 開発向け devcontainer 定義ファイル
 ├── features/                # Dev Container Features
 └── .github/workflows/       # validate / test / release
 ```
