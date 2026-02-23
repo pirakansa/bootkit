@@ -2,7 +2,7 @@ version: 3
 
 repositories:
   - _comment: Dev Container template (Go)
-    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/golang/
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/go/
     files:
       - file_name: devcontainer.json
         out_dir: .devcontainer

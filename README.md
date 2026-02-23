@@ -5,6 +5,11 @@ CLI ツール本体の配布マニフェストと、dotfiles などの設定フ�
 
 - `ppkgmgr`: https://github.com/pirakansa/ppkgmgr
 
+## 方針
+
+- 利用者向けの導線は `ppkgmgr` を入口に統一します。
+- 配布対象はマニフェスト単位で管理し、用途ごとに `manifests/` で分類します。
+
 ## クイックスタート
 
 ```bash
@@ -26,16 +31,16 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/co
 | `gh-cli` | [GitHub CLI](https://github.com/cli/cli) | `manifests/linux-x64/gh-cli.yml` |
 | `nodejs` | [Node.js](https://nodejs.org/) | `manifests/linux-x64/nodejs.yml` |
 
-### 設定ファイル（共通）
+### 共通マニフェスト（ppkgmgr）
 
 | ツール | 説明 | マニフェスト |
 |---|---|---|
 | `gitconfig` | `.gitconfig` テンプレート | `manifests/common/gitconfig.yml` |
 | `vimrc` | `.vimrc` テンプレート | `manifests/common/vimrc.yml` |
 | `vscode-settings` | VS Code `settings.json` テンプレート | `manifests/common/vscode-settings.yml` |
-| `devcontainer-go` | Go 用 `.devcontainer` テンプレート | `manifests/common/devcontainer-go.yml` |
-| `devcontainer-node` | Node.js 用 `.devcontainer` テンプレート | `manifests/common/devcontainer-node.yml` |
-| `devcontainer-rust` | Rust 用 `.devcontainer` テンプレート | `manifests/common/devcontainer-rust.yml` |
+| `devcontainer-go` | Go 用 `.devcontainer` マニフェスト | `manifests/common/devcontainer-go.yml` |
+| `devcontainer-node` | Node.js 用 `.devcontainer` マニフェスト | `manifests/common/devcontainer-node.yml` |
+| `devcontainer-rust` | Rust 用 `.devcontainer` マニフェスト | `manifests/common/devcontainer-rust.yml` |
 
 ## マニフェスト適用例
 
@@ -46,25 +51,26 @@ ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/gh-cli.yml
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/nodejs.yml
 
-# 設定ファイル系（上書きなし）
+# 共通マニフェスト（上書きなし）
 ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml
 ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vimrc.yml
 ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vscode-settings.yml
 
-# Dev Container テンプレート（カレントディレクトリの .devcontainer/ に展開）
+# Dev Container マニフェスト（.devcontainer に展開）
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-go.yml
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-node.yml
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-rust.yml
 ```
 
-## Dev Container テンプレート
+## Dev Container マニフェスト（ppkgmgr 入口）
 
-`devcontainers/` 以下に、`golang` / `node` / `rust` 向けテンプレートがあります。
-
-`ppkgmgr` で適用する場合（カレントディレクトリの `.devcontainer/` に展開）:
+`devcontainers/` 以下に、`go` / `node` / `rust` 向けの元ファイルがあります。  
+各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します:
 
 ```bash
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-go.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-go.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-node.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-rust.yml
 ```
 
 ## ディレクトリ構成
@@ -76,10 +82,10 @@ bootkit/
 │   ├── linux-x64/           # Linux x64 向けマニフェスト
 │   └── common/              # 共通設定ファイル向けマニフェスト
 ├── devcontainers/
-│   ├── golang/              # Go 開発向け devcontainer テンプレート
+│   ├── go/                  # Go 開発向け devcontainer 元ファイル
 │   ├── node/                # Node.js 開発向け devcontainer テンプレート
 │   └── rust/                # Rust 開発向け devcontainer テンプレート
-├── features/                # Dev Container Features 本体とテスト
+├── features/                # Dev Container Features
 └── .github/workflows/       # validate / test / release
 ```
 
