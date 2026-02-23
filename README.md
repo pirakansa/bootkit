@@ -67,16 +67,11 @@ ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/
 ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml
 ```
 
-## Dev Container マニフェスト（ppkgmgr 入口）
+## Dev Container マニフェスト
 
 `devcontainers/` 以下に、`go` / `node` / `rust` 向けの devcontainer 定義ファイルがあります。  
-各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します:
-
-```bash
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-node.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml
-```
+各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します。  
+実行コマンドは「マニフェスト適用例」を参照してください。
 
 ## ディレクトリ構成
 
