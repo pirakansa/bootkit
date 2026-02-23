@@ -38,9 +38,14 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/co
 | `gitconfig` | `.gitconfig` テンプレート | `manifests/common/gitconfig.yml` |
 | `vimrc` | `.vimrc` テンプレート | `manifests/common/vimrc.yml` |
 | `vscode-settings` | VS Code `settings.json` テンプレート | `manifests/common/vscode-settings.yml` |
-| `devcontainer-go` | Go 用 `.devcontainer` マニフェスト | `manifests/common/devcontainer-go.yml` |
-| `devcontainer-node` | Node.js 用 `.devcontainer` マニフェスト | `manifests/common/devcontainer-node.yml` |
-| `devcontainer-rust` | Rust 用 `.devcontainer` マニフェスト | `manifests/common/devcontainer-rust.yml` |
+
+### Dev Container マニフェスト（ppkgmgr）
+
+| ツール | 説明 | マニフェスト |
+|---|---|---|
+| `devcontainer-go` | Go 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-go.yml` |
+| `devcontainer-node` | Node.js 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-node.yml` |
+| `devcontainer-rust` | Rust 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-rust.yml` |
 
 ## マニフェスト適用例
 
@@ -57,9 +62,9 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/co
 ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vscode-settings.yml
 
 # Dev Container マニフェスト（.devcontainer に展開）
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-go.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-node.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-rust.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-node.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml
 ```
 
 ## Dev Container マニフェスト（ppkgmgr 入口）
@@ -68,9 +73,9 @@ ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/
 各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します:
 
 ```bash
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-go.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-node.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/devcontainer-rust.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-node.yml
+ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml
 ```
 
 ## ディレクトリ構成
@@ -80,7 +85,8 @@ bootkit/
 ├── assets/                  # 設定ファイル実体
 ├── manifests/
 │   ├── linux-x64/           # Linux x64 向けマニフェスト
-│   └── common/              # 共通設定ファイル向けマニフェスト
+│   ├── common/              # 共通設定ファイル向けマニフェスト
+│   └── devcontainers/       # Dev Container 向けマニフェスト
 ├── devcontainers/
 │   ├── go/                  # Go 開発向け devcontainer 元ファイル
 │   ├── node/                # Node.js 開発向け devcontainer テンプレート
