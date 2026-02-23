@@ -95,6 +95,7 @@ ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/
 }
 ```
 
+全体構成とテスト方法は `features/README.md` を参照してください。  
 詳細は `features/src/persistence/README.md` を参照してください。
 
 ## ディレクトリ構成
