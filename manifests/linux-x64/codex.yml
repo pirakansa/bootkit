@@ -1,4 +1,4 @@
-version: 3
+version: 1
 
 repositories:
   - _comment: OpenAI Codex CLI (Linux x64)

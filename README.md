@@ -1,23 +1,23 @@
 # bootkit
 
-`ppkgmgr` のマニフェストをまとめた、個人用ブートストラップリポジトリです。  
+`vorbere` で利用するマニフェストをまとめた、個人用ブートストラップリポジトリです。  
 CLI ツール本体の配布マニフェストと、dotfiles などの設定ファイル配布マニフェストを管理しています。
 
-- `ppkgmgr`: https://github.com/pirakansa/ppkgmgr
+- `vorbere`: https://github.com/pirakansa/Vorbere
 
 ## 方針
 
-- 利用者向けの導線は `ppkgmgr` を入口に統一します。
+- 利用者向けの導線は `vorbere` を入口に統一します。
 - 配布対象はマニフェスト単位で管理し、用途ごとに `manifests/` で分類します。
 
 ## クイックスタート
 
 ```bash
 # 例: Codex CLI をインストール（既存ファイルを上書き）
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml sync --overwrite
 
 # 例: .gitconfig を配置（既存ファイルを保持）
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml sync
 ```
 
 ## 利用可能なマニフェスト
@@ -32,7 +32,7 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/co
 | `nodejs` | [Node.js](https://nodejs.org/) | `manifests/linux-x64/nodejs.yml` |
 | `opencode` | [OpenCode](https://github.com/anomalyco/opencode) | `manifests/linux-x64/opencode.yml` |
 
-### 共通マニフェスト（ppkgmgr）
+### 共通マニフェスト（vorbere）
 
 | ツール | 説明 | マニフェスト |
 |---|---|---|
@@ -40,7 +40,7 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/co
 | `vimrc` | `.vimrc` テンプレート | `manifests/common/vimrc.yml` |
 | `vscode-settings` | VS Code `settings.json` テンプレート | `manifests/common/vscode-settings.yml` |
 
-### Dev Container マニフェスト（ppkgmgr）
+### Dev Container マニフェスト（vorbere）
 
 | ツール | 説明 | マニフェスト |
 |---|---|---|
@@ -52,21 +52,21 @@ ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/co
 
 ```bash
 # CLI 系（上書きあり）
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/gh-cli.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/nodejs.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/opencode.yml
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/gh-cli.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/nodejs.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/opencode.yml sync --overwrite
 
 # 共通マニフェスト（上書きなし）
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vimrc.yml
-ppkgmgr dl https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vscode-settings.yml
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml sync
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vimrc.yml sync
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/vscode-settings.yml sync
 
 # Dev Container マニフェスト（.devcontainer に展開）
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-node.yml
-ppkgmgr dl --overwrite https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-node.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml sync --overwrite
 ```
 
 ## Dev Container マニフェスト
