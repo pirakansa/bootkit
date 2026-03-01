@@ -11,7 +11,7 @@
     "accessibility.voice.speechLanguage": "ja-JP",
     "http.systemCertificatesNode": true,
     "dev.containers.defaultFeatures": {
-        "ghcr.io/pirakansa/bootkit/persistence:latest": {
+        "ghcr.io/pirakansa/feature/persistence:latest": {
             "codex": true
         }
     }
