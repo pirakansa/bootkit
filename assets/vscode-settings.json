@@ -12,7 +12,9 @@
     "http.systemCertificatesNode": true,
     "dev.containers.defaultFeatures": {
         "ghcr.io/pirakansa/feature/persistence:latest": {
-            "codex": true
+            "codex": true,
+            "gh-cli": true,
+            "copilot-cli": true
         }
     }
 }
