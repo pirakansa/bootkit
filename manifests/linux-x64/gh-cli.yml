@@ -2,7 +2,7 @@ version: 1
 
 repositories:
   - _comment: GitHub CLI (Linux x64)
-    url: https://github.com/cli/cli/releases/download/v2.87.2/
+    url: https://github.com/cli/cli/releases/download/v2.87.3/
     files:
       - file_name: gh_2.87.2_linux_amd64.tar.gz
         encoding: tar+gzip
