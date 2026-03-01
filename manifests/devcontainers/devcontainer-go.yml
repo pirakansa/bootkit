@@ -11,6 +11,12 @@ repositories:
       - file_name: init.sh
         out_dir: .devcontainer
         mode: "0755"
+  - _comment: Agents guide (Go)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/agents.md/
+    files:
+      - file_name: go.md
+        out_dir: .
+        rename_to: AGENTS.md
   - _comment: Agents skill (conventional-commits-authoring)
     url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/conventional-commits-authoring/
     files:
