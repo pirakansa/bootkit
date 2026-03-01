@@ -23,7 +23,8 @@ RUN useradd -u ${CONTAINER_USERID} -s /bin/bash -m ${CONTAINER_USERNAME} && \
 
 USER ${CONTAINER_USERNAME}
 
-RUN rustup default stable && \
+RUN curl -fsSL https://raw.githubusercontent.com/pirakansa/vorbere/main/install.sh | bash && \
+    rustup default stable && \
     rustup component add rustfmt clippy && \
     cargo install cargo-audit
 
