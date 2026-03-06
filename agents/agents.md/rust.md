@@ -86,7 +86,6 @@ We follow the **package layout described in The Cargo Book** for a project consi
 ## Coding Standards
 
 * Always run `vorbere run check` and ensure all included static checks pass with no warnings (CI requirement).
-* Run `vorbere run lint` for static checks and ensure there are no warnings (CI requirement).
 * Prefer `thiserror` for error types; use `anyhow` only in binaries.
 * Naming: modules in `snake_case`, types in `UpperCamelCase`.
 * Extract magic numbers/URLs into constants with meaningful names.
@@ -111,7 +110,7 @@ We follow the **package layout described in The Cargo Book** for a project consi
 
 GitHub Actions (`.github/workflows/ci.yml`) runs the following:
 
-* `vorbere run lint`
+* `vorbere run check`
 * `vorbere run test`
 * `vorbere run build`
 
