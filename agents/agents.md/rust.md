@@ -29,7 +29,7 @@ Rule of thumb:
 * Recommended: VS Code Dev Container / GitHub Codespaces (use the `.devcontainer/` image).
 * Base packages: `sudo apt-get install build-essential`.
 * Rust toolchain: `rustup default stable` (rustfmt/clippy components are required).
-* Helper tools: `vorbere` (see `vorbere.yaml` tasks below).
+* Task runner: `vorbere.yaml` via `vorbere run <task>` (CI uses the tasks described later).
 
 ---
 
@@ -37,7 +37,7 @@ Rule of thumb:
 
 * Build: `vorbere run build`
 * Test: `vorbere run test`
-* Lint: `vorbere run lint`
+* Check: `vorbere run check`
 * Cleanup: `vorbere run clean` or `cargo clean`.
 * For CLI usage and command examples, see the Usage section in README.md.
 
@@ -85,7 +85,7 @@ We follow the **package layout described in The Cargo Book** for a project consi
 
 ## Coding Standards
 
-* Always run `vorbere run fmt-check` so the code remains formatted.
+* Always run `vorbere run check` and ensure all included static checks pass with no warnings (CI requirement).
 * Run `vorbere run lint` for static checks and ensure there are no warnings (CI requirement).
 * Prefer `thiserror` for error types; use `anyhow` only in binaries.
 * Naming: modules in `snake_case`, types in `UpperCamelCase`.
@@ -102,9 +102,8 @@ We follow the **package layout described in The Cargo Book** for a project consi
 
 ### Static Analysis / Lint / Vulnerability Scanning
 
-* Static analysis: `vorbere run clippy`
-* Code quality: `vorbere run fmt-check`
-* Vulnerability scanning: `vorbere run audit`
+* Run `vorbere run check` as the default entry point for static analysis, linting, vulnerability scanning, and related verification.
+* If needed, use underlying component commands only to investigate or isolate specific failures (for example, `vorbere run vulnerability`).
 
 ---
 
@@ -116,7 +115,7 @@ GitHub Actions (`.github/workflows/ci.yml`) runs the following:
 * `vorbere run test`
 * `vorbere run build`
 
-Confirm `vorbere run lint` / `vorbere run test` / `vorbere run build` succeed locally before opening a PR. If they fail, format and validate locally, then rerun.
+Confirm `vorbere run check` / `vorbere run test` / `vorbere run build` succeed locally before opening a PR. If they fail, format and validate locally, then rerun.
 
 ---
 
@@ -133,8 +132,7 @@ Confirm `vorbere run lint` / `vorbere run test` / `vorbere run build` succeed lo
 
 * If multiple `AGENTS.md` files exist, reference the one closest to your working directory (this repository only has the top-level file).
 * When instructions conflict, prioritize explicit user prompts and clarify any uncertainties.
-* Before and after your work, ensure `vorbere run lint`, `vorbere run test`, and `vorbere run build` all succeed; report the cause and fix if any of them fail.
-
+* Before and after your work, ensure `vorbere run check`, `vorbere run test`, and `vorbere run build` all succeed; report the cause and fix if any of them fail.
 
 ---
 
@@ -242,6 +240,6 @@ For structured authoring (template, checklist), use the skill: `pr-description-a
 
 ## Checklist
 
-* [ ] `vorbere run lint`
+* [ ] `vorbere run check`
 * [ ] `vorbere run test`
 * [ ] `vorbere run build`
