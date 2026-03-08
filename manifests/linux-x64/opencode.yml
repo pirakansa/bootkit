@@ -2,7 +2,7 @@ version: 1
 
 repositories:
   - _comment: OpenCode (Linux x64)
-    url: https://github.com/anomalyco/opencode/releases/download/v1.2.18/
+    url: https://github.com/anomalyco/opencode/releases/download/v1.2.21
     files:
       - file_name: opencode-linux-x64.tar.gz
         encoding: tar+gzip

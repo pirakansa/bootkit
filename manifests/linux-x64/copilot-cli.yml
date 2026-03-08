@@ -2,7 +2,7 @@ version: 1
 
 repositories:
   - _comment: GitHub Copilot CLI (Linux x64)
-    url: https://github.com/github/copilot-cli/releases/download/v0.0.422/
+    url: https://github.com/github/copilot-cli/releases/download/v1.0.2
     files:
       - file_name: copilot-linux-x64.tar.gz
         encoding: tar+gzip

@@ -2,7 +2,7 @@ version: 1
 
 repositories:
   - _comment: .vimrc
-    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/assets/
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/assets
     files:
       - file_name: vimrc
         rename: .vimrc
