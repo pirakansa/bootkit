@@ -1,8 +1,11 @@
 version: 1
 
+vars:
+  COPILOT_CLI_VERSION: "1.0.4"
+
 repositories:
   - _comment: GitHub Copilot CLI (Linux x64)
-    url: https://github.com/github/copilot-cli/releases/download/v1.0.2
+    url: https://github.com/github/copilot-cli/releases/download/v${{ .vars.COPILOT_CLI_VERSION }}
     files:
       - file_name: copilot-linux-x64.tar.gz
         encoding: tar+gzip

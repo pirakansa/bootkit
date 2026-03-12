@@ -1,12 +1,15 @@
 version: 1
 
+vars:
+  GH_CLI_VERSION: "2.88.0"
+
 repositories:
   - _comment: GitHub CLI (Linux x64)
-    url: https://github.com/cli/cli/releases/download/v2.87.3
+    url: https://github.com/cli/cli/releases/download/v${{ .vars.GH_CLI_VERSION }}
     files:
-      - file_name: gh_2.87.3_linux_amd64.tar.gz
+      - file_name: gh_${{ .vars.GH_CLI_VERSION }}_linux_amd64.tar.gz
         encoding: tar+gzip
-        extract: gh_2.87.3_linux_amd64/bin/gh
+        extract: gh_${{ .vars.GH_CLI_VERSION }}_linux_amd64/bin/gh
         rename: gh
         out_dir: $HOME/.local/bin
         mode: "0755"
