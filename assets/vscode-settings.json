@@ -10,6 +10,32 @@
     "terminal.integrated.suggest.enabled": false,
     "accessibility.voice.speechLanguage": "ja-JP",
     "http.systemCertificatesNode": true,
+    "terminal.integrated.shellIntegration.enabled": false,
+    "terminal.integrated.inheritEnv": false,
+    "files.watcherExclude": {
+        "**/.git/**": true,
+        "**/node_modules/**": true,
+        "**/dist/**": true,
+        "**/build/**": true,
+        "**/coverage/**": true,
+        "**/.aws-sam/**": true,
+        "**/.next/**": true,
+        "**/.pnpm/**": true,
+        "**/pnpm-lock.yaml": true,
+        "**/cdk.out/**": true
+    },
+    "search.exclude": {
+        "**/.git/**": true,
+        "**/node_modules/**": true,
+        "**/dist/**": true,
+        "**/build/**": true,
+        "**/coverage/**": true,
+        "**/.aws-sam/**": true,
+        "**/.next/**": true,
+        "**/.pnpm/**": true,
+        "**/pnpm-lock.yaml": true,
+        "**/cdk.out/**": true
+    },
     "dev.containers.defaultFeatures": {
         "ghcr.io/pirakansa/feature/persistence:latest": {
             "codex": true,
