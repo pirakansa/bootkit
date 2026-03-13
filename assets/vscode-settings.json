@@ -12,6 +12,7 @@
     "http.systemCertificatesNode": true,
     "terminal.integrated.shellIntegration.enabled": false,
     "terminal.integrated.inheritEnv": false,
+    "terminal.integrated.gpuAcceleration": "off",
     "files.watcherExclude": {
         "**/.git/**": true,
         "**/node_modules/**": true,
