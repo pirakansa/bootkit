@@ -1,7 +1,7 @@
 version: 1
 
 vars:
-  GH_CLI_VERSION: "2.88.0"
+  GH_CLI_VERSION: "2.88.1"
 
 repositories:
   - _comment: GitHub CLI (Linux x64)
