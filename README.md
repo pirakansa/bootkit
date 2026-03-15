@@ -47,6 +47,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 | `devcontainer-go` | Go 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-go.yml` |
 | `devcontainer-node` | Node.js 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-node.yml` |
 | `devcontainer-rust` | Rust 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-rust.yml` |
+| `devcontainer-gcc` | GCC 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-gcc.yml` |
 
 ## マニフェスト適用例
 
@@ -67,6 +68,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-node.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-gcc.yml sync --overwrite
 ```
 
 ## Dev Container マニフェスト

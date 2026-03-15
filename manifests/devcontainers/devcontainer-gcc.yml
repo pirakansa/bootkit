@@ -1,0 +1,51 @@
+version: 1
+
+repositories:
+  - _comment: Dev Container template (gcc)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/gcc
+    files:
+      - file_name: devcontainer.json
+        out_dir: .devcontainer
+      - file_name: Dockerfile
+        out_dir: .devcontainer
+  - _comment: Agents guide (Rust)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/agents.md
+    files:
+      - file_name: rust.md
+        out_dir: .
+        rename: AGENTS.md
+  - _comment: Agents skill (code-review-findings-first)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/code-review-findings-first
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/code-review-findings-first
+  - _comment: Agents skill (conventional-commits-authoring)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/conventional-commits-authoring
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/conventional-commits-authoring
+  - _comment: Agents skill (docs-maintenance-implementation-sync)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/docs-maintenance-implementation-sync
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/docs-maintenance-implementation-sync
+  - _comment: Agents skill (pr-description-authoring)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/pr-description-authoring
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/pr-description-authoring
+  - _comment: Agents skill (refactor-structural-readability)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/refactor-structural-readability
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/refactor-structural-readability
+  - _comment: Agents skill (spec-driven-doc-authoring)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/spec-driven-doc-authoring
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/spec-driven-doc-authoring
+  - _comment: Agents skill (spec-to-code-implementation)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/spec-to-code-implementation
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/spec-to-code-implementation
