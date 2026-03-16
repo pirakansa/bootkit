@@ -25,7 +25,7 @@ Rule of thumb:
 ## Setup Steps
 
 * Recommended: VS Code Dev Container / GitHub Codespaces (use the `.devcontainer/` image).
-* On the first run, execute `vorbere run install` at the project root to make sure dependencies are intact.
+* On the first run, execute `vorbere run setup` at the project root to make sure dependencies are intact.
 * Task runner: `vorbere` (CI uses the `vorbere` tasks described later).
 
 ---
