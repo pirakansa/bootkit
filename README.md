@@ -49,6 +49,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 | `devcontainer-python` | Python 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-python.yml` |
 | `devcontainer-rust` | Rust 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-rust.yml` |
 | `devcontainer-gcc` | GCC 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-gcc.yml` |
+| `devcontainer-ubuntu` | Ubuntu 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-ubuntu.yml` |
 
 ## マニフェスト適用例
 
@@ -71,11 +72,12 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-python.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-gcc.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-ubuntu.yml sync --overwrite
 ```
 
 ## Dev Container マニフェスト
 
-`devcontainers/` 以下に、`gcc` / `go` / `node` / `python` / `rust` 向けの devcontainer 定義ファイルがあります。  
+`devcontainers/` 以下に、`gcc` / `go` / `node` / `python` / `rust` / `ubuntu` 向けの devcontainer 定義ファイルがあります。  
 各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します。  
 実行コマンドは「マニフェスト適用例」を参照してください。
 
@@ -119,7 +121,8 @@ bootkit/
 │   ├── go/                  # Go 開発向け devcontainer 定義ファイル
 │   ├── node/                # Node.js 開発向け devcontainer 定義ファイル
 │   ├── python/              # Python 開発向け devcontainer 定義ファイル
-│   └── rust/                # Rust 開発向け devcontainer 定義ファイル
+│   ├── rust/                # Rust 開発向け devcontainer 定義ファイル
+│   └── ubuntu/              # Ubuntu 汎用 devcontainer 定義ファイル
 ├── features/                # Dev Container Features 実装とテスト
 └── .github/workflows/       # validate / test / release
 ```
