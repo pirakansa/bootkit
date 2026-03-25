@@ -46,6 +46,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 |---|---|---|
 | `devcontainer-go` | Go 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-go.yml` |
 | `devcontainer-node` | Node.js 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-node.yml` |
+| `devcontainer-python` | Python 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-python.yml` |
 | `devcontainer-rust` | Rust 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-rust.yml` |
 | `devcontainer-gcc` | GCC 用 `.devcontainer` マニフェスト | `manifests/devcontainers/devcontainer-gcc.yml` |
 
@@ -67,13 +68,14 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 # Dev Container マニフェスト（.devcontainer に展開）
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-node.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-python.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-gcc.yml sync --overwrite
 ```
 
 ## Dev Container マニフェスト
 
-`devcontainers/` 以下に、`go` / `node` / `rust` 向けの devcontainer 定義ファイルがあります。  
+`devcontainers/` 以下に、`go` / `node` / `python` / `rust` 向けの devcontainer 定義ファイルがあります。  
 各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します。  
 実行コマンドは「マニフェスト適用例」を参照してください。
 
@@ -114,6 +116,7 @@ bootkit/
 ├── devcontainers/
 │   ├── go/                  # Go 開発向け devcontainer 定義ファイル
 │   ├── node/                # Node.js 開発向け devcontainer 定義ファイル
+│   ├── python/              # Python 開発向け devcontainer 定義ファイル
 │   └── rust/                # Rust 開発向け devcontainer 定義ファイル
 ├── features/                # Dev Container Features 実装とテスト
 └── .github/workflows/       # validate / test / release
