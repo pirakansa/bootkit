@@ -75,7 +75,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 
 ## Dev Container マニフェスト
 
-`devcontainers/` 以下に、`go` / `node` / `python` / `rust` 向けの devcontainer 定義ファイルがあります。  
+`devcontainers/` 以下に、`gcc` / `go` / `node` / `python` / `rust` 向けの devcontainer 定義ファイルがあります。  
 各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します。  
 実行コマンドは「マニフェスト適用例」を参照してください。
 
@@ -113,7 +113,9 @@ bootkit/
 │   ├── linux-x64/           # Linux x64 向けマニフェスト
 │   ├── common/              # 共通設定ファイル向けマニフェスト
 │   └── devcontainers/       # Dev Container 向けマニフェスト
+├── agents/                  # エージェント設定・スキル定義
 ├── devcontainers/
+│   ├── gcc/                 # GCC 開発向け devcontainer 定義ファイル
 │   ├── go/                  # Go 開発向け devcontainer 定義ファイル
 │   ├── node/                # Node.js 開発向け devcontainer 定義ファイル
 │   ├── python/              # Python 開発向け devcontainer 定義ファイル
