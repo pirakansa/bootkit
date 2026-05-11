@@ -1,7 +1,7 @@
 version: 1
 
 vars:
-  OPENCODE_VERSION: "1.14.40"
+  OPENCODE_VERSION: "1.14.47"
 
 repositories:
   - _comment: OpenCode (Linux x64)
