@@ -1,7 +1,7 @@
 version: 1
 
 vars:
-  COPILOT_CLI_VERSION: "1.0.34"
+  COPILOT_CLI_VERSION: "1.0.44"
 
 repositories:
   - _comment: GitHub Copilot CLI (Linux x64)
