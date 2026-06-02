@@ -1,4 +1,4 @@
-FROM rust:1-slim-bookworm
+FROM rust:1.95.0-slim-bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=C.UTF-8 \
@@ -24,7 +24,7 @@ RUN useradd -u ${CONTAINER_USERID} -s /bin/bash -m ${CONTAINER_USERNAME} && \
 USER ${CONTAINER_USERNAME}
 
 RUN curl -fsSL https://raw.githubusercontent.com/pirakansa/vorbere/main/install.sh | bash && \
-    rustup default stable && \
+    rustup default 1.95.0 && \
     rustup component add rustfmt clippy && \
     cargo install cargo-audit
 
