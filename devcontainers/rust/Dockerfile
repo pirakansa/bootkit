@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND=noninteractive \
     LC_ALL=C.UTF-8
 
 RUN apt update -y && \
-    apt install -y curl git sudo zstd make
+    apt install -y curl git sudo zstd make ripgrep
 
 
 ARG CONTAINER_USERNAME=builder
