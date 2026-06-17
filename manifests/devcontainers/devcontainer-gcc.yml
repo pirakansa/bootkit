@@ -11,7 +11,7 @@ repositories:
   - _comment: Agents guide (Rust)
     url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/agents.md
     files:
-      - file_name: rust.md
+      - file_name: gcc.md
         out_dir: .
         rename: AGENTS.md
   - _comment: Agents skill (code-review-findings-first)
