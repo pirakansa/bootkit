@@ -27,7 +27,6 @@ Rule of thumb:
 ## Setup Steps
 
 * Recommended: VS Code Dev Container / GitHub Codespaces (use the `.devcontainer/` image).
-* On the first run, execute `vorbere run setup` at the project root to make sure dependencies are intact.
 * Base packages: `sudo apt-get install build-essential`.
 * Rust toolchain: `rustup default stable` (rustfmt/clippy components are required).
 * Task runner: `vorbere.yaml` via `vorbere run <task>` (CI uses the tasks described later).
