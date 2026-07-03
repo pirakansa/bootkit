@@ -1,9 +1,10 @@
-FROM rust:1.95.0-slim-bookworm
+FROM rust:1.96.1-slim-bookworm
 
 ENV DEBIAN_FRONTEND=noninteractive \
     LANG=C.UTF-8 \
     LANGUAGE=en_US:en \
-    LC_ALL=C.UTF-8
+    LC_ALL=C.UTF-8 \
+    RUSTUP_PERMIT_COPY_RENAME=true
 
 RUN apt update -y && \
     apt install -y curl git sudo zstd make ripgrep
@@ -24,7 +25,7 @@ RUN useradd -u ${CONTAINER_USERID} -s /bin/bash -m ${CONTAINER_USERNAME} && \
 USER ${CONTAINER_USERNAME}
 
 RUN curl -fsSL https://raw.githubusercontent.com/pirakansa/vorbere/main/install.sh | bash && \
-    rustup default 1.95.0 && \
+    rustup default 1.96.1 && \
     rustup component add rustfmt clippy && \
     cargo install cargo-audit
 
