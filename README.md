@@ -29,6 +29,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 | `codex` | [OpenAI Codex CLI](https://github.com/openai/codex) | `manifests/linux-x64/codex.yml` |
 | `copilot-cli` | [GitHub Copilot CLI](https://github.com/github/copilot-cli) | `manifests/linux-x64/copilot-cli.yml` |
 | `gh-cli` | [GitHub CLI](https://github.com/cli/cli) | `manifests/linux-x64/gh-cli.yml` |
+| `mani` | [mani](https://github.com/alajmo/mani) | `manifests/linux-x64/mani.yml` |
 | `nodejs` | [Node.js](https://nodejs.org/) | `manifests/linux-x64/nodejs.yml` |
 | `opencode` | [OpenCode](https://github.com/anomalyco/opencode) | `manifests/linux-x64/opencode.yml` |
 
@@ -58,6 +59,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/gh-cli.yml sync --overwrite
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/mani.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/nodejs.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/opencode.yml sync --overwrite
 

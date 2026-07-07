@@ -1,0 +1,15 @@
+version: 1
+
+vars:
+  MANI_VERSION: "0.32.1"
+
+repositories:
+  - _comment: mani (Linux x64)
+    url: https://github.com/alajmo/mani/releases/download/v${{ .vars.MANI_VERSION }}
+    files:
+      - file_name: mani_${{ .vars.MANI_VERSION }}_linux_amd64.tar.gz
+        encoding: tar+gzip
+        extract: mani
+        rename: mani
+        out_dir: $HOME/.local/bin
+        mode: "0755"
