@@ -17,6 +17,11 @@ repositories:
       - file_name: rust.md
         out_dir: .
         rename: AGENTS.md
+  - _comment: Agents skill (code-design-review)
+    url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/code-design-review
+    files:
+      - file_name: SKILL.md
+        out_dir: .agents/skills/code-design-review
   - _comment: Agents skill (code-review-findings-first)
     url: https://raw.githubusercontent.com/pirakansa/bootkit/main/agents/skills/code-review-findings-first
     files:
