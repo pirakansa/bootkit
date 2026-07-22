@@ -1,7 +1,7 @@
 version: 1
 
 vars:
-  CODEX_VERSION: "0.144.5"
+  CODEX_VERSION: "0.144.6"
 
 repositories:
   - _comment: OpenAI Codex CLI (Linux x64)
