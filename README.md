@@ -13,9 +13,6 @@ CLI ツール本体の配布マニフェストと、dotfiles などの設定フ�
 ## クイックスタート
 
 ```bash
-# 例: Codex CLI をインストール（既存ファイルを上書き）
-vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml sync --overwrite
-
 # 例: .gitconfig を配置（既存ファイルを保持）
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/common/gitconfig.yml sync
 ```
@@ -26,7 +23,6 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 
 | ツール | 説明 | マニフェスト |
 |---|---|---|
-| `codex` | [OpenAI Codex CLI](https://github.com/openai/codex) | `manifests/linux-x64/codex.yml` |
 | `copilot-cli` | [GitHub Copilot CLI](https://github.com/github/copilot-cli) | `manifests/linux-x64/copilot-cli.yml` |
 | `gh-cli` | [GitHub CLI](https://github.com/cli/cli) | `manifests/linux-x64/gh-cli.yml` |
 | `mani` | [mani](https://github.com/alajmo/mani) | `manifests/linux-x64/mani.yml` |
@@ -56,7 +52,6 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 
 ```bash
 # CLI 系（上書きあり）
-vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/codex.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/copilot-cli.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/gh-cli.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/linux-x64/mani.yml sync --overwrite
