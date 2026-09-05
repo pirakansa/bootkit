@@ -13,6 +13,9 @@
     "terminal.integrated.shellIntegration.enabled": false,
     "terminal.integrated.inheritEnv": false,
     "terminal.integrated.gpuAcceleration": "off",
+    "chatgpt.localeOverride": null,
+    "git.replaceTagsWhenPull": true,
+    "scm.repositories.selectionMode": "single",
     "files.watcherExclude": {
         "**/.git/**": true,
         "**/node_modules/**": true,
@@ -38,10 +41,6 @@
         "**/cdk.out/**": true
     },
     "dev.containers.defaultFeatures": {
-        "ghcr.io/pirakansa/feature/persistence:latest": {
-            "codex": true,
-            "gh-cli": true,
-            "copilot-cli": true
-        }
+        "ghcr.io/pirakansa/feature/persistence:1": {}
     }
 }
