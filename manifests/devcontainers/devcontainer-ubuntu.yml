@@ -1,5 +1,13 @@
 version: 1
 
+tasks:
+  setup:
+    run: |
+      mkdir -p .github .claude
+      ln -sfnT ../.agents/skills .github/skills
+      ln -sfnT ../.agents/skills .claude/skills
+      ln -sfnT AGENTS.md CLAUDE.md
+
 repositories:
   - _comment: Dev Container template (Ubuntu)
     url: https://raw.githubusercontent.com/pirakansa/bootkit/main/devcontainers/ubuntu

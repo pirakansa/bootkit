@@ -68,12 +68,16 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-rust.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-gcc.yml sync --overwrite
 vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-ubuntu.yml sync --overwrite
+
+# 例: 適用した Dev Container マニフェストの setup を実行
+vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manifests/devcontainers/devcontainer-go.yml run setup
 ```
 
 ## Dev Container マニフェスト
 
 `devcontainers/` 以下に、`gcc` / `go` / `node` / `python` / `rust` / `ubuntu` 向けの devcontainer 定義ファイルがあります。  
 各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します。  
+`sync` の後に同じマニフェストで `run setup` を実行すると、`.agents/skills` から `.github/skills` と `.claude/skills` へのシンボリックリンク、および `AGENTS.md` を参照する `CLAUDE.md` を作成します。
 実行コマンドは「マニフェスト適用例」を参照してください。
 
 ## ディレクトリ構成
