@@ -76,31 +76,6 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 各マニフェストは、カレントディレクトリの `.devcontainer/` に展開します。  
 実行コマンドは「マニフェスト適用例」を参照してください。
 
-## Dev Container Features
-
-`features/` には Dev Container Feature の実装とテストが含まれます。
-
-- `features/src/persistence`: コンテナ再作成時にもユーザー領域データを保持する Feature。
-- `features/src/hello`: Feature 開発・テスト用のサンプル Feature。
-- `features/test/*`: Feature のテストシナリオ。
-
-`persistence` Feature の利用例:
-
-```json
-"features": {
-  "ghcr.io/<owner>/<repo>/persistence:1": {
-    "claude": true,
-    "codex": true,
-    "gemini": false,
-    "copilot-cli": true,
-    "gh-cli": true
-  }
-}
-```
-
-全体構成とテスト方法は `features/README.md` を参照してください。  
-詳細は `features/src/persistence/README.md` を参照してください。
-
 ## ディレクトリ構成
 
 ```text
@@ -118,7 +93,6 @@ bootkit/
 │   ├── python/              # Python 開発向け devcontainer 定義ファイル
 │   ├── rust/                # Rust 開発向け devcontainer 定義ファイル
 │   └── ubuntu/              # Ubuntu 汎用 devcontainer 定義ファイル
-├── features/                # Dev Container Features 実装とテスト
 └── .github/workflows/       # validate / test / release
 ```
 
