@@ -85,6 +85,7 @@ vorbere --config https://raw.githubusercontent.com/pirakansa/bootkit/main/manife
 ```text
 bootkit/
 ├── assets/                  # 設定ファイル実体
+├── .devcontainer/           # bootkit 自体の開発環境
 ├── manifests/
 │   ├── linux-x64/           # Linux x64 向けマニフェスト
 │   ├── common/              # 共通設定ファイル向けマニフェスト
@@ -99,6 +100,11 @@ bootkit/
 │   └── ubuntu/              # Ubuntu 汎用 devcontainer 定義ファイル
 └── .github/workflows/       # validate / test / release
 ```
+
+## bootkit の開発環境
+
+ルートの `.devcontainer/` には、bootkit 自体を開発するための Dev Container 設定があります。Node.js 20、Docker-in-Docker、Dev Container CLI を利用します。
+`devcontainers/` 以下の定義は、各リポジトリに配布するテンプレートであり、この開発環境とは用途が異なります。
 
 ## 新しいマニフェストを追加する
 
