@@ -18,11 +18,14 @@
         }
     },
     "features": {
-        "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+        "ghcr.io/devcontainers/features/docker-in-docker:4": {}
     },
     "remoteEnv": {
         "PATH": "${containerEnv:PATH}:/home/node/.local/bin"
     },
+
+    "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
+    "workspaceFolder": "${localWorkspaceFolder}",
     "remoteUser": "node",
     "updateContentCommand": "npm install -g @devcontainers/cli"
 }
