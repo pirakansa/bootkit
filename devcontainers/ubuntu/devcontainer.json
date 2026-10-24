@@ -6,8 +6,8 @@
     "features": {
         "ghcr.io/devcontainers/features/docker-in-docker:2": {}
     },
-    "workspaceMount": "source=${localWorkspaceFolder},target=/work/${localWorkspaceFolderBasename},type=bind,consistency=cached",
-    "workspaceFolder": "/work/${localWorkspaceFolderBasename}",
+    "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind",
+    "workspaceFolder": "${localWorkspaceFolder}",
     "remoteUser": "ubuntu",
     "remoteEnv": {
         "PATH": "${containerEnv:PATH}:/home/ubuntu/.local/bin"
